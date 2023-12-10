@@ -1,2 +1,2 @@
 # Python Technical-Assessment
-Technical Assessment Question & Solution submitted by me for a Product Company
+Technical Assessment Solution developed and submitted by me for a Product Company

@@ -1,2 +1,2 @@
-# Data-Science-Technical-Assessment
-Technical Assessment Question & Solution for a Product Company
+# Python Technical-Assessment
+Technical Assessment Question & Solution submitted by me for a Product Company

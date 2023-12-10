@@ -1,0 +1,233 @@
+Data Science Technical Assessment Solution
+Submitted By: Saivalini Durvasula 
+
+Solution: 
+1.	Your best guess as to the original strings (if you have one) 
+Please find the Original Strings I generated below: 
+Original String 1: ELNPIEIGAOSTTEEWAWEWTDTENAESGOOEAEASLOCINAICYNAUEBPSNCIEEHRTITOEHSNNATFTPOVANNIYETSDHLRREAONRTSAASMRBNAIEPRTDTSLEKAYCASYTLTPPKUL
+
+Original String 2: 
+HAENSAAAACSSELMOALLBRLCYHETLEEYRLLLNIAAIAOVCOGYODDCWESFEETROAPPITANTPDWHTHOYOEILRPIEKCIPAYSNNATUNSODBCCDNANLSTNNRYLTLHIUEEASEEGS
+
+Original String 3: 
+LERRPRAIPOSRTADFLOIRILPSEARLWATSAEAESEOIPANARREEEEMPPYAEAORLVBIUODNSNORERLLDDAITATEOMNNLCFINLPOYSSRNTDRAHUCSYTTREEUNYGYMYATWDESO
+
+Original String 4: 
+ECEDPETRNSOLIEEETVIEYERDERGSINLSIIEAAINAFATOBRDIHRRBFROIRBTAMNAEZUROEEDLAARAYHIDAOANMWRMLTSBDHTETTHCPKMONMMIXVUAFPEPMYETLLARRIBN
+ 
+Original String 5: 
+EPAWTDACITSAMUFNFNYSNIGTNRGNIWEONALSEAFCLTDGOTNEEMECHETSSCIECAWSETTNEEHESBHIEWNAIAREAOEUEGQESETTEODNEISAEHMOHATEEORVSCSMTRTTERSN
+ 
+Original String 6: 
+OGISTVNSTOITTENIMAWVRNTENVLNSJEPEDRDAIUCLTHEVIPIFOURDPNOSEUUGDNYSOAAAEUNSAEOGILORHSTNTOTRNRFATLPTIELNISAOROJNTRDNAEMEENMILLIYOPP
+ 
+Original String 7: 
+OICEOMRAADNLEETOSRRSOTAANSOATITIIDNSVRUCILEOTSCIPKMLITCTOVEMDHHSNNNEENNMYKAPEREOAUNDPMEOLITABUCUREENFAETNEEQHSNRRSLAENEOEEATERCR
+ 
+Original String 8: 
+SOELIFHIAHWNBHOWTOERHHETATFCTAASNERFSACIAOTHTIEOCTIEHSSRLETTLLTLATPHRECENFTRSOADIELREAAGIKNIYAMONSTIGBTGKENAHGUNTHTUFIDDHDCCEPSA
+
+Original String 9: 
+CUEHTEBBLTURETTCIYOEIAOROHHECNNHNFROEFTFESAGNAEPHRTAWAEDLSPNMISTRSFEIHTATATOINCNEAEFHAENEHEITTRLOICIPSTVHPASMARODOHLHINTODTDNYEK
+
+Original String 10: 
+NGESDRCLNEESMNEMSUDORNCAEDDASUNEIIELROINESRWIHNBGDTATBUOIGOODOMNELRNAIDEYENPMAMNEGDEOSLNBZEUTSRUAACGFXEYINNNMTESOREFASFNMOSOCLSI
+
+
+2.	A description of how you approached the problem
+
+•	Permutation is a computation where the order matters. Therefore, my initial thought was to map the position of the characters that go into the original string from the permuted string. 
+
+•	These positions would remain fixed, and any permuted string we give the script, it generates the original string with the same position. 
+
+•	Therefore, I started off by looking at the pattern and position of characters in the 15-character example strings provided. 
+
+•	Since the goal of the task was to retrieve the Original Strings from the Permuted Strings, I mapped the position of the characters in the original string to that of the permuted string as shown below. 
+
+•	The indexing in python starts with 0, therefore, the positions I mentioned below also start from 0 to 14 (giving us a total of 15 characters). 
+
+Step-1: The 2 strings given to me were: 
+
+Original String-1: A B C D E F G H I J K L M N O
+Permuted String-2: C M L N F A O H D I J K B G E
+
+Original String-2: M Y L A N G U A G E M O D E L 
+Permuted String-2: L D O E G M L A A G E M Y U N
+
+•	I started mapping characters with the original String-1, as it has unique characters and none of them repeat like in case of string-2. It was easier to map the positions and fix them based on string-1. 
+
+•	Below is my approach: 
+        A B C D E F G H I J K L M N O: C M L N F A O H D I J K B G E. (unique letters) 
+•	Read the below as: “A” in the original string comes from the 5th position in the permuted string. 
+•	“B” in the original string comes from the 12th position in the permuted string 
+•	“C” in the original string comes from the 0th position in the permuted string & so on
+•	The positioning starts from index 0 based on python indexing. 
+
+0.	A: 5th position in the permuted string 
+1.	B: 12th position in the permuted string 
+2.	C: 0th position in the permuted string 
+3.	D: 8th position in the permuted string 
+4.	E: 14th position in the permuted string 
+5.	F: 4th position in the permuted string 
+6.	G: 13th position in the permuted string 
+7.	H: 7th position in the permuted string 
+8.	I:  9th position in the permuted string 
+9.	J: 10th position in the permuted string 
+10.	K: 11th position in the permuted string 
+11.	L: 2nd position in the permuted string 
+12.	M: 1st position in the permuted string 
+13.	N: 3rd position in the permuted string 
+14.	O: 6th position in the permuted string 
+
+Representing it below in a tabular form for a clear representation: 
+Position of Letter in the Original String	Letters in the Original String	Position of the letter in the permuted string
+0	A	5
+1	B	12
+2	C	0
+3	D	8
+4	E	14
+5	F	4
+6	G	13
+7	H	7
+8	I	9
+9	J	10
+10	K	11
+11	L	2
+12	M	1
+13	N	3
+14	O	6
+
+•	Therefore, if we want to retrieve the original string, the first character in the original string comes from the 5th character in the permuted string. 
+•	Similarly, 2nd character in the original string comes from the 12th character in the permuted string and so on till the 15th character in the original string that comes from the 6th character in the permuted string.
+
+
+Similarly for the original-String-2: 
+Position of Letter in the Original String	Letters in the Original String	Position of that the letter in the permuted string
+0	M	5
+1	Y	12
+2	L	0
+3	A	8 (This letter could be coming from 7th position in the original string too, but based on the pattern in the 1rst string decided it is coming from the 8th position) 
+Similar intuition was used for other repeating characters in this string. 
+4	N	14
+5	G	4
+6	U	13
+7	A	7
+8	G	9
+9	E	10
+10	M	11
+11	O	2
+12	D	1
+13	E	3
+14	L	6
+
+Therefore, the pattern and positions fixed are to retrieve 15-character strings: 
+Original string positions [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] = permuted string positions [5,12,0,8,14,4,13,7,9,10,11,2,1,3,6]
+
+To cross-check my work, the mapping for the other way round would be: (showing the example for string-1 only here, as this mapping would apply to string-2 as well)
+Position of Letter in the Permuted String	Letters in the Permuted String	Position of the letter in the original string
+0	C	2
+1	M	12
+2	L	11
+3	N	13
+4	F	5
+5	A	0
+6	O	14
+7	H	7
+8	D	3
+9	I	8
+10	J	9
+11	K	10
+12	B	1
+13	G	6
+14	E	4
+
+Permuted string positions [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14] = Original string positions [2,12,11,13,5,0,14,7,3,8,9,10,1,6,4[
+Step-2: 
+
+•	Now that I could generate my pattern for 15 characters, I have to extend this to 128 characters. 
+•	Initial thought process: What could be the link between the 15 digits and 128? 
+•	128/15: is 8.5. So, do we repeat our fixed pattern from step-1 8.5 times to get the original string from 128 characters? We can repeat it 8 times, but how do we repeat it 0.5 times? 
+•	Even if I repeat the pattern * 8 times. This will only produce the same pattern ‘8’ times, which is not what we want. 
+•	Are there different patterns for the 15-character string and the last 8-characters of the strings? Let’s see how this moves forward. 
+•	For now, the approach I would follow is to split the 128-character string into 15 characters each, apply the pattern I fixed in step-1 and retrieve the original 15-character strings and concatenate them all together to get the 128-character string. 
+Step-3:  
+•	I worked out the code based on my thought above. 
+•	The approach in step-2 works, but the difficulty is that we do not have 15-character strings spaced across the 128 characters. 
+•	What we have is 8: 15-character strings and 1: 8-character string at the end. 
+•	Therefore, as per my initial thinking, we may have to apply a different logic to retrieve the last 8-charcater string. 
+•	Initial Thoughts: Add white spaces to the 8-character length string to make it 15-character length. Then drop the white spaces at the end. 
+•	Built the code based on this idea and below are the issues that came up! 
+Two-problems that came up: 
+•	Problem-1: Last 15-characters in the original string generated have empty spaces as shown below:
+ 
+•	Problem-2: Generates a 135-character length string. What we need is a 128-character string with no spaces as per the question description in the assessment. 
+Step-4: To work on the problems above, the approach I took was: 
+•	I looked at the letters in the last 15 characters of the 135 original string I created.  
+•	If we drop the white spaces, we will get the original 8-characters that we need. 
+•	On dropping the white spaces: This is the original 8-character string: YATWDESO
+•	I came to this conclusion because, when I cross-check and run my code to generate the permuted string from the 135-chracter string with white spaces, I get the exact permuted string we need. As shown below: 
+ 
+•	This means, our original string consists of these letters: YATWDESO (in that order). 
+•	It’s just that I need to remove spaces here. 
+•	Therefore, I mapped the positions using the original 8-character string that I generated with white spaces and the 8-character permuted string from the question that we have.  
+
+•	Permuted String:             A   E D   S   T   Y  O  W
+o	Positions:            [0    1 2    3   4    5   6   7]
+•	Original String:  Y  A  T W   D E S O 
+
+The positions are mapped below: 
+Position of Letter in the Original String	Letters in the Original String	Position of the letter in the permuted string
+0	Y	5
+1	A	0
+2	T	4
+3	W	7
+4	D	2
+5	E	1
+6	S	3
+7	O	6
+
+Therefore, we need to use the positions: [5,0,4,7,2,1,3,6] to generate the original string for an 8-digit permuted string. 
+•	How did I get these positions? I used the permuted string to original string converter code that I built, based on the mapped positions. 
+•	To cross-check, lets generate the permuted string back from the original string? Let’s map those positions below: 
+•	Original String:           Y  A  T  W   D  E  S  O
+o	Positions:        [0  1   2   3    4   5   6  7]
+•	Permuted string: A   E  D  S  T    Y O  W
+
+Position of Letter in the Permuted String	Letters in the Permuted String	Position of the same letter coming from the original string
+0	A	1
+1	E	5
+2	D	4
+3	S	6
+4	T	2
+5	Y	0
+6	O	7
+7	W	3
+Therefore, the positions to create the permuted string from the original string are: [1,5,4,6,2,0,7,3]
+
+Step-5: Final Code Development
+•	Therefore, to generate the 128-characters original string:
+•	Based on the above analysis: 
+•	We need to create an if else condition 
+•	Split the 128-character string into lengths of 15 
+•	if length is "==" to 15, use position pattern-1 from step-1 for the 15-character original string characters 
+•	Else use position pattern-2 from step-4 to generate the 8-character original string 
+•	Finally concatenate the individual (8: 15-character strings & 1: 8-character string) to generate the complete 128-character original string. 
+•	Repeat the process 10 times for the 10: 128-character permuted strings given in the assessment 
+Step-6: Automate the Above Process/Code 
+•	Automate the code to give an input of a list containing all the 10: 128-character permuted strings and generate an output list with 10: 128-character original strings
+
+3.	A description of how much time you spent on this problem, including dead ends,    
+preparatory work, and so on. 
+
+•	I spent about 7 hours on step-1 to step-6, this includes logic building, code development, code improvement & code automation step.  
+•	The document preparation and finalizing my code to submit, took me about 1 hour more. 
+•	The total time spent was spread around 2 days’ time. 
+
+4.	The code sample used to accomplish the challenge 
+•	The code (jupyter notebook) is present in the zip folder. 
+
+5.	All attached files should be in zip form.
+•	Done! 
+
+
+
